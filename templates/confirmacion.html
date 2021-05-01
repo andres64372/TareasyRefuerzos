@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación</title>
+    <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='icon.png')}}"/>
+    
+</head>
+<body id="body" style="font-family: sans-serif;" onbeforeunload="Back()">
+    <div style="text-align: center;">
+        <div id="box">
+            <img id="logo" src="{{url_for('static', filename='icon.png')}}" style="width:200px">
+        </div>
+        <div id="box">
+            <h1 style="font-size: 40px;">
+                Gracias por preferirnos! &#127773. Muy pronto nos contactaremos con tigo 
+                para finalizar el proceso de cotización
+            </h1>
+        </div>
+        <div>
+            <a id = "ret" href="{{url_for('index')}}" style="font-size: 40px; color: rgb(8, 142, 251); text-decoration:none; ">
+                Regresar
+            </a>
+        </div>
+    </div>
+</body>
+<script>
+    ret = document.getElementById('ret');
+    setTimeout(function(){ret.click();},5000);
+</script>
+</html>

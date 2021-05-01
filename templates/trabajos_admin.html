@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correo</title>
+    <style>
+        p{
+            font-family: sans-serif;
+            font-size: 15px;
+        }
+        h1{
+            font-family: sans-serif;
+            font-size: 30px;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(17, 118, 233);
+        }
+        #box{
+            text-align: center; 
+            border: 1px; 
+            border-style: solid; 
+            width: 80%; 
+            margin-left: 4%; 
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img id="logo" src="{{logo}}" style="width:200px">
+        <h1>Nueva cotización</h1>
+        <div style="text-align: left;">
+            <p><strong>Tipo de cotizacion: </strong>Trabajo</p>
+            <p><strong>Cliente: </strong>{{nombre}}</p>
+            <p><strong>Carrera: </strong>{{carrera}}</p>
+            <p><strong>Materia: </strong>{{materia}}</p>
+            <p><strong>Tema: </strong>{{tema}}</p>
+            <p><strong>Correo: </strong>{{correo}}</p>
+            <p><strong>Contacto: </strong>{{celular}} <a href="{{telefono}}">WhatsApp</a></p>
+            <p><strong>Fecha de entrega: </strong>{{entrega}}</p>
+            <p><strong>Medio de contacto: </strong>{{medio}}</p>
+            <p><strong>Comentarios: </strong>{{detalles}}</p>
+            <p><strong>Archivos adjuntos: </strong></p>
+            <p>{{archivos}}</p>
+        </div>
+    </div>
+</body>
+</html>

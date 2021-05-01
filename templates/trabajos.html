@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Tareas y Refuerzos</title>
+    <link rel="shortcut icon" type="image/png" href="{{url_for('image', imagen='icon.png')}}"/>
+    <style>
+        body{
+            font-size: 20px;
+            font-family: sans-serif;
+            box-sizing: border-box;
+            text-align: center;
+            
+        }
+        table{
+            border-collapse: collapse;
+            border: 1px solid #e3e3e3;
+            margin: auto;
+            margin-top: 50px;
+            width: 100%;
+        }
+        th, td{
+            padding: 10px;
+            border: 1px solid #e3e3e3;
+        }
+        thead{
+            background-color: #ff5f5f;
+            color: white;
+        }
+        box{
+            display: inline-block;
+            padding-top: 20px;
+            box-sizing: border-box;
+            width:49%;
+            text-align: left;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        header{
+            display: inline-block;
+            padding-top: 20px;
+            box-sizing: border-box;
+            width: 100%;
+  
+        }
+        input,select,textarea{
+            font-size: 20px;
+            border-radius: 5px;
+            border-width: 1px; 
+            padding: 5px 10px 5px 10px;
+            outline: none;
+        }
+        #cargar{
+            border-width: 0px; 
+            background-color:#ff5f5f; 
+            border-radius: 20px; 
+            color: white;
+            padding: 10px 20px 10px 20px;
+            font-size: 20px;
+        }
+        #regresar{
+            border-width: 0px; 
+            background-color:#ff5f5f; 
+            border-radius: 20px; 
+            color: white;
+            padding: 10px 20px 10px 20px;
+            font-size: 20px;
+        }
+        #envia{
+            border: solid 2px;
+            border-color:#ff5f5f; 
+            border-radius: 20px; 
+            background-color: white;
+
+            padding: 10px 20px 10px 20px;
+            font-size: 30px;
+        }
+        @media screen and (max-width: 800px) {
+            box {
+                width:100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="max-width: 1200px; margin:0 auto;">
+        <div style="text-align: left;">
+            <button id="regresar">Regresar</button>
+        </div>
+        <div style="text-align: center; width: 100%">
+            <div>
+                <img id="logo" src="{{url_for('static', filename='logo1.png')}}" style="width:200px">
+            </div>
+            <div>
+                <h1>Cotiza tu trabajo</h1>            
+            </div>
+        </div>  
+        <div style="text-align: center; width: 97%;">
+            <form method="POST" enctype="multipart/form-data" action="{{url_for('subtrabajos')}}">
+                <box>
+                    <p style="font-size: 15px; text-align: left;"><sup>*</sup>Datos obligatorios</p> 
+                    <label><strong>Tu nombre:<sup>*</sup></strong></label>
+                    <input name="nombre" style="width: 98%;" required/>   
+                </box>
+                <box>
+                    <label><strong>Carrera:</strong></label>
+                    <input name="carrera" style="width: 98%;"/>   
+                </box>
+                <box>
+                    <label><strong>Materia:<sup>*</sup></strong></label>
+                    <input name="materia" style="width: 98%;" required/>
+                </box>
+                <box>
+                    <label><strong>Tema:<sup>*</sup></strong></label>
+                    <input name="tema" style="width: 98%;" required/>
+                </box>
+                <box>
+                    <label><strong>Correo electronico:</strong></label>
+                    <input name="correo" style="width: 98%;"/>
+                </box>
+                <box>
+                    <label><strong>Numero de celular:<sup>*</sup></strong> (+57)</label>
+                    <input name="celular" style="width: 98%;" required/>
+                </box>
+                <box>
+                    <label>Fecha de entrega de tu trabajo:<sup>*</sup>&nbsp;&nbsp;&nbsp;</label>
+                    <input type="date" name="fecha" required/>
+                </box>
+                <box>
+                    <label>Hora de entrega: &nbsp;&nbsp;&nbsp;</label>
+                    <input type="time" name="hora"/>
+                </box>
+                <box>
+                    <label><strong>Por que medio deseas ser contactado</strong></label>
+                    <select name="medio">
+                        <option value="celular">WhatApp</option>
+                        <option value="correo">Correo electronico</option>
+                    </select>
+                </box>
+                <header>
+                    <label><strong>Detalles a tener en cuenta:</strong></label>
+                    <textarea name="detalles" rows="10" style="font-size: 20px; width: 98%; resize: none;"></textarea>   
+                </header>
+                <p>Aquí puedes adjuntar cualquier archivo relacionado al material de estudio (Maximo 20Mb) &#128071</p>
+                <header>
+                    <input id="file-input" type="file" name="file" multiple="multiple"/>                
+                </header>
+                <header style="text-align: center;">
+                    <input id="envia" type="submit" name="Enviar" value="Enviar" style="margin-bottom: 20px; text-align: center;"/>             
+                </header>
+                <header style="text-align: center;">
+                    <input id="cargar" type="submit" value="Cargar archivos" />             
+                </header>
+                <table id="table">
+                    <colgroup>
+                        <col>
+                        <col style="width: 20px; text-align: center;">
+                    </colgroup>
+                    <thead>
+                        <th>Archivo</th>
+                        <th>Eliminar</th>
+                    </thead>
+                    <tbody id = "tbody" style="font-size: 15px;">
+                </table>
+                
+                <div style="margin-bottom: 20px; text-align: left;">
+                    <input id="subfile" type="text" name="subfile"/>             
+                </div>
+            </form>
+        </div> 
+    </div> 
+</body>
+<script>
+    var regresar = document.getElementById("regresar");
+    var files = document.getElementById("file-input");
+    var envia = document.getElementById("envia");
+    var subfile = document.getElementById("subfile");
+    var table = document.getElementById("tbody");
+    var cargar = document.getElementById("cargar");
+    files.style.visibility = "hidden";
+    subfile.style.visibility = "hidden";
+    //envia.disabled = true;
+    document.getElementById("table").style.visibility = "hidden";
+    var filenum = 0;
+    var label = [];
+    var ext = /(\.rar|\.pdf|\.doc|\.docx|\.xls|\.xlsx|\.jpeg|\.jpg|\.png|\.gif)$/i;
+    files.addEventListener("change", function(){
+        const xhr = new XMLHttpRequest();
+        const form = new FormData();
+        for (const file of files.files){
+            if(file.size < 20*1024*1024){
+                if(ext.exec(file.name)){
+                    form.append("file",file);
+                    filenum++;
+                }else{
+                    alert("La extension del archivo "+ file.name +" no es valida");
+                }
+            }else{
+                alert("El archivo "+ file.name +" es demasiado pesado");
+            };
+            
+
+        }
+        if(filenum > 0){
+            document.getElementById("table").style.visibility = "visible";
+            xhr.open("post","{{url_for('file')}}");
+            xhr.addEventListener("loadstart", function(data){
+                envia.disabled = true;
+            })
+            xhr.addEventListener("load", function(data){
+                var resp = JSON.parse(data.target.response);
+                
+                for(const index of resp){
+                    var row = table.insertRow(0);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    cell1.innerHTML = index.name;
+                    cell2.innerHTML = "<a onclick='borrar(this)'> &#128308 </a>";
+                    label.push(index)
+                }
+                strconv();
+                envia.disabled = false;
+            })
+            xhr.send(form);
+        }
+    });
+    function borrar(e){
+        const xhr = new XMLHttpRequest();
+        const form = new FormData();
+        var i = e.parentNode.parentNode.rowIndex;
+        var val = -1;
+        var element = document.getElementById("table").rows[i].cells[0].innerHTML;
+        xhr.open("post","{{url_for('borrar')}}");
+        xhr.addEventListener("loadstart", function(data){
+            envia.disabled = true;
+        })
+        xhr.addEventListener("load", function(data){
+            envia.disabled = false;
+        })
+        for(const index of label){
+            if(index.name === element){
+                form.append("file",index.file);
+                xhr.send(form);
+                label.splice(label.indexOf(index),1);
+            }
+        }
+        strconv();
+        document.getElementById("table").deleteRow(i);
+        filenum--;
+        if(filenum<1){
+            document.getElementById("table").style.visibility = "hidden";
+        }
+    };
+    function strconv(){
+        var arr = [];
+        for(const index of label){
+            arr.push(index.file);
+        }
+        subfile.value = arr.toString();
+    }
+    cargar.addEventListener("click", function(evt) {
+        evt.preventDefault();
+        files.click();
+    });
+    regresar.addEventListener("click", function(){
+        window.history.back();
+    });
+</script>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Tareas y Refuerzos</title>
+    <link rel="shortcut icon" type="image/png" href="{{url_for('image', imagen='icon.png')}}"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8535534204109009"
+     crossorigin="anonymous"></script>
+     <meta name="theme-color" content="#ffffff">
+     <meta name="MobileOptimized" content="width">
+     <meta name="HandheldFriendly" content="true">
+     <meta name="mobile-web-app-capable" content="yes">
+     <meta name="apple-mobile-web-app-capable" content="yes">
+     <meta name="apple-mobile-web-app-status-bar-style" content="white">
+     <link rel="apple-touch-icon" href="{{url_for('image', imagen='favicon.jpg')}}">
+     <link rel="apple-touch-startup-image" href="{{url_for('image', imagen='logo.jpg')}}">
+     <link rel="manifest" href="{{url_for('static', filename='manifest.json')}}">
+    <style>
+        p,h1,h2{
+            font-family: sans-serif;
+        }
+        a{
+            text-decoration:none; 
+            color: rgb(0, 153, 255);
+        }
+        #box{
+            display: inline-block;
+            margin: 20px 20px 20px 20px;
+        }
+        #card{
+            padding-top: 20px;
+            margin: 50px 50px 50px 50px;
+            box-shadow: 0px 0px 10px 2px gray;
+            width: 300px;
+            height: 400px;
+            display: inline-block;
+        }
+    </style>
+    <script>
+        if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register("/sw.js")
+            .then(reg => console.log("Registro de SW exitoso", reg))
+            .catch(err => console.warn('Error al tratar de registrar el sw', err))
+        }
+    </script>
+</head>
+<body style="text-align: center;">
+    <div style="text-align: center;">
+        <div id="box">
+            <img id="logo" src="{{url_for('static', filename='icon.png')}}" style="width:200px">
+        </div>
+        <div id="box">
+            <h1 style="font-size: 40px;">Bienvenid@ a la fantabulosa pagina Tareas y Refuerzos!!</h1>
+            <h2 style="width: 100%;">Te apoyamos todo tipo de deberes academicos (ahora con pagina de internet), 
+                cotiza en linea o escribenos usando 
+                <a href="https://api.whatsapp.com/send?phone=573192869775" target="_blank">
+                    <strong>Este enlace</strong>
+                </a></h2>
+            <p>Para cotizar tu trabajo solo debes seguir estos sencillos pasos &#128071</p>
+            <p>Ingresa el tipo de trababo que deseas cotizar:</p>
+        </div>
+    </div>
+    
+    <div style="text-align: center;">
+        <div id="card">
+            <a id="trabajos" href="{{url_for('trabajos')}}" style="text-decoration:none">
+                <img id="logo1" src="{{url_for('static', filename='logo1.png')}}" style="width:60%">
+                <p style="color: black;">Trabajos</p>
+            </a>
+        </div>
+        <div id="card">
+            <a id="examenes" href="{{url_for('examenes')}}" style="text-decoration:none">
+                <img id="logo2" src="{{url_for('static', filename='logo2.png')}}" style="width:60%">
+                <p style="color: black;">Examenes</p>
+            </a>
+        </div>
+        <div id="card">
+            <a id="clases" href="{{url_for('clases')}}" style="text-decoration:none">
+                <img id="logo3" src="{{url_for('static', filename='logo3.png')}}" style="width:60%">
+                <p style="color: black;">Clases</p>
+            </a>
+        </div>
+    </div>
+    <p>
+        Nota: Los pagos se harán a traves de la cuenta autorizada 
+        de nequi # 3194837953, 
+        para esto puedes pagar a traves de 
+        <a href="https://recarga.nequi.com.co/bdigitalpsl/?_ga=2.208112852.732471645.1618708721-1802236995.1616614147#!/" target="_blank">PSE</a>,
+         corresponsales autorizados de bancolombia o usando el codigo 
+        <a id="qr" href="{{url_for('static', filename='qr.jpeg')}}">QR</a>
+    </p>
+    <br>
+    <p>Siguenos en nuestras redes</p>
+    <div>
+        <div id="box">
+            <a href="https://www.instagram.com/tareas_refuerzos/?r=nametag"><img src="{{url_for('image', imagen='instagram.png')}}" style="width: 60px;"></a>
+        </div>
+        <div id="box">
+            <a href="https://www.facebook.com/tareasrefuerzos/"><img src="{{url_for('image', imagen='facebook.png')}}" style="width: 60px;"></a>
+        </div>
+        <div id="box">
+            <a href="https://www.youtube.com/channel/UC132elAWM1BRJP15Ay9oLDQ"><img src="{{url_for('image', imagen='youtube.png')}}" style="width: 60px;"></a>
+        </div>
+    </div>
+</body>
+</html>

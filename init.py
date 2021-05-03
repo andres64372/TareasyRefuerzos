@@ -8,7 +8,7 @@ import sqlite3
 
 url = "http://tareasyrefuerzos.tk/"
 email_id = 'tareasyrefuerzosco@gmail.com'
-pass_id = "ysppjohbendlrnbv" #os.environ.get('MAIL_PSSWD')
+pass_id = ""
 email_admin = 'tareas_refuerzos@hotmail.com'
 mainlogo = url+"images/icon.png"
 urlfiles = url+"archivos/"

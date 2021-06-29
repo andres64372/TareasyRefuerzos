@@ -8,11 +8,10 @@ import sqlite3
 
 url = "http://tareasyrefuerzos.tk/"
 email_id = 'tareasyrefuerzosco@gmail.com'
-pass_id = ""
+pass_id = "ysppjohbendlrnbv"
 email_admin = 'tareas_refuerzos@hotmail.com'
-mainlogo = url+"images/icon.png"
+mainlogo = url+"static/icon.png"
 urlfiles = url+"archivos/"
-FILE_PATH = '/var/www/html/TareasyRefuerzos/files/'
 
 app = Flask(__name__)
 
@@ -23,7 +22,7 @@ app.config['MAIL_USERNAME'] = email_id
 app.config['MAIL_PASSWORD'] = pass_id
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['UPLOAD_FOLDER'] = FILE_PATH
+app.config['UPLOAD_FOLDER'] = '/var/www/html/TareasyRefuerzos/files/'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////var/www/html/TareasyRefuerzos/database/database.db'
 
 db = SQLAlchemy(app)
@@ -118,20 +117,16 @@ def examenes():
 def clases():
     return render_template("clases.html"),200
 
-@app.route("/images/<string:imagen>")
-def image(imagen):
-    return send_file("static/"+imagen),200
-
 @app.route("/archivos/<string:archivo>")
 def archivos(archivo):
-    return send_file(FILE_PATH+archivo),200
+    return send_file(app.config['UPLOAD_FOLDER']+archivo),200
 
 @app.route("/borrar", methods=['POST','GET'])
 def borrar():
     if request.method == 'POST':
         files = request.form.getlist('file')[0]
         try:
-            os.remove(FILE_PATH+files)
+            os.remove(app.config['UPLOAD_FOLDER']+files)
         except:
             pass
     return "OK",200

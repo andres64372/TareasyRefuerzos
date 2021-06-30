@@ -22,8 +22,10 @@ app.config['MAIL_USERNAME'] = email_id
 app.config['MAIL_PASSWORD'] = pass_id
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['UPLOAD_FOLDER'] = '/var/www/html/TareasyRefuerzos/files/'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////var/www/html/TareasyRefuerzos/database/database.db'
+#app.config['UPLOAD_FOLDER'] = '/var/www/html/TareasyRefuerzos/files/'
+app.config['UPLOAD_FOLDER'] = '/files/'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////var/www/html/TareasyRefuerzos/database/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////database/database.db'
 
 db = SQLAlchemy(app)
 mail = Mail(app)

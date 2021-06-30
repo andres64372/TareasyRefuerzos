@@ -1,6 +1,6 @@
 ;
 //asignar un nombre y versión al cache
-const CACHE_NAME = 'v1.9_cache_tareas_refuerzos',
+const CACHE_NAME = 'v1.8_cache_tareas_refuerzos',
   urlsToCache = [
     "/",
     "/trabajos",
